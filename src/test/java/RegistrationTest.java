@@ -1,5 +1,5 @@
 import Steps.FormsPageSteps;
-import Steps.MainPageSteps;
+import Steps.FirstPageSteps;
 import Steps.PopUpSteps;
 import Steps.PracticeFormsSteps;
 import org.testng.Assert;
@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class RegistrationTest extends ConfigTest{
-    MainPageSteps mainPageSteps = new MainPageSteps();
+    FirstPageSteps firstPageSteps = new FirstPageSteps();
     FormsPageSteps formsPageSteps = new FormsPageSteps();
     PracticeFormsSteps practiceFormsSteps = new PracticeFormsSteps();
     PopUpSteps popUpSteps = new PopUpSteps();
@@ -18,7 +18,7 @@ public class RegistrationTest extends ConfigTest{
     @Test
     public void registrationTest(){
         open("https://demoqa.com");
-        mainPageSteps.clickOnForms();
+        firstPageSteps.clickOnForms();
         formsPageSteps.clickOnPractice();
         practiceFormsSteps.setUserName().setLastName().setGender().setMobileNumber().formSubmit();
         popUpSteps.checkText().checkEquality();

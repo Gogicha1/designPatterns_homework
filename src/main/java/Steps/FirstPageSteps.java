@@ -1,10 +1,10 @@
 package Steps;
 
-import Pages.MainPage;
+import Pages.FirstPage;
 import io.qameta.allure.Step;
 
-public class MainPageSteps {
-    MainPage mainPage = new MainPage();
+public class FirstPageSteps {
+    FirstPage mainPage = new FirstPage();
 
     @Step
     public void clickOnForms(){
