@@ -21,27 +21,27 @@ public class MoviesSectionSteps {
         js = (JavascriptExecutor) driver;
     }
 
-    @Step
+    @Step("Clicking on Last Suggested Date")
     public MoviesSectionSteps clickOnLastDate(){
         js.executeScript("arguments[0].scrollIntoView();" + "arguments[0].click()", moviesSectionPage.date);
         return this;
     }
 
-    @Step
-    public MoviesSectionSteps checkEastPoint(){
+    @Step ("Assertion of Cinema names with {0}")
+    public MoviesSectionSteps checkEastPoint(String theatreName){
         Iterator<WebElement> iterator = moviesSectionPage.eastPointSeances.iterator();
         while (iterator.hasNext()) {
             WebElement seance = iterator.next();
             if (seance.getText().isEmpty()){
                 iterator.remove();
             }else {
-                Assert.assertEquals(seance.getText(), "კავეა ისთ ფოინთი");
+                Assert.assertEquals(seance.getText(), theatreName);
             }
         }
         return this;
     }
 
-    @Step
+    @Step ("Clicking on Last Seance")
     public MoviesSectionSteps clickOnLastOption(){
         WebElement lastSeance = moviesSectionPage.eastPointSeances.get(moviesSectionPage.eastPointSeances.size() - 1);
         js.executeScript("arguments[0].click()", lastSeance);

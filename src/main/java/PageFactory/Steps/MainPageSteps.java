@@ -14,7 +14,7 @@ public class MainPageSteps {
         mainPage = new MainPage(driver);
     }
 
-    @Step
+    @Step("Click on Navigation Button to Movies Page")
     public MainPageSteps clickOnMovieButton(){
         mainPage.movieButton.click();
         return this;
