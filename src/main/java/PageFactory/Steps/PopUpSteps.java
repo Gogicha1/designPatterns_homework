@@ -31,7 +31,7 @@ public class PopUpSteps {
     }
 
 
-    @Step
+    @Step ("Asserting Data")
     public PopUpSteps checkEquality(){
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(popUpPages.checkData));
         String day = moviesSectionPage.date.getText().split(" ")[0];
@@ -48,7 +48,7 @@ public class PopUpSteps {
         return this;
     }
 
-    @Step
+    @Step ("Clicking on Free Seat")
     public PopUpSteps clickOnFreeSeat(){
         js.executeScript("arguments[0].click()", popUpPages.freeSeat);
         return this;

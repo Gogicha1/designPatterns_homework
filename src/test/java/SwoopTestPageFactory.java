@@ -2,35 +2,29 @@ import PageFactory.Steps.MainPageSteps;
 import PageFactory.Steps.MoviesSectionSteps;
 import PageFactory.Steps.MoviesSteps;
 import PageFactory.Steps.PopUpSteps;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import io.qameta.allure.*;
+import org.testng.Assert;
+import org.testng.annotations.*;
 
-import java.util.concurrent.TimeUnit;
 
-import static com.codeborne.selenide.Selenide.open;
+@Listeners({ListenerConfig.class})
+@Epic("Test of Booking Ticket on Swoop")
+@Feature("Using Click Methods and Assertions")
 
-public class SwoopTestPageFactory extends ConfigTest{
+public class SwoopTestPageFactory extends SeleniumConfig {
 
     private MainPageSteps mainPageSteps;
     private MoviesSteps moviesSteps;
     private MoviesSectionSteps moviesSectionSteps;
     private PopUpSteps popUpSteps;
-    private WebDriver driver;
-
-    @BeforeTest
-    public void beforeTest(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-    }
 
 
-    @Test
+    @Test(description = "swoop test")
+    @Story("User Choosing Movie, Seance and Booking it")
+    @Description("Test for Swoop Choosing Movie Which has Seance" +
+            " in Specific Cinema Place And Make Booking")
+    @Severity(SeverityLevel.NORMAL)
+
     public void swoopTestPageFactory(){
         mainPageSteps = new MainPageSteps(driver);
         moviesSteps = new MoviesSteps(driver);
@@ -39,12 +33,9 @@ public class SwoopTestPageFactory extends ConfigTest{
 
         mainPageSteps.clickOnMovieButton();
         moviesSteps.clickOnBuy();
-        moviesSectionSteps.clickOnLastDate().checkEastPoint().clickOnLastOption();
+        moviesSectionSteps.clickOnLastDate().checkEastPoint("კავეა ისთ ფოინთი").clickOnLastOption();
         popUpSteps.checkEquality().clickOnFreeSeat();
-    }
 
-    @AfterTest
-    public void tearDown(){
-        driver.close();
+        Assert.fail();
     }
 }

@@ -9,14 +9,14 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage {
     private WebDriver driver;
 
-    private static String PAGE_URL="https://www.swoop.ge/";
+//    private static String PAGE_URL=;
 
     @FindBy(xpath = "//div[@class='Menus']//a[contains(@href, '/events')]")
     public WebElement movieButton;
 
     public MainPage(WebDriver driver){
         this.driver = driver;
-        driver.get(PAGE_URL);
+        driver.get("https://www.swoop.ge/");
         PageFactory.initElements(driver, this);
     }
 

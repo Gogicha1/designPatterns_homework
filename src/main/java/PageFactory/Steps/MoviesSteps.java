@@ -26,7 +26,7 @@ public class MoviesSteps {
         js = (JavascriptExecutor) driver;
     }
 
-    @Step
+    @Step ("Checking Movies if has Requested Place in Names and then Clicking on Buy")
     public MoviesSteps clickOnBuy(){
         for (int i = 0; i <= moviesPage.allMovies.size(); i++) {
             WebElement movie = moviesPage.allMovies.get(i);
